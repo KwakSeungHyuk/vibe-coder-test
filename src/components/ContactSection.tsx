@@ -27,7 +27,7 @@ const ContactSection = () => {
     setSubmitStatus('idle')
     
     try {
-      // Supabase에 데이터 저장 시도
+      // 문의 저장 시도 (Supabase 또는 로컬 스토리지)
       const result = await submitContactForm(formData as ContactForm)
       
       if (result.success) {
@@ -35,21 +35,12 @@ const ContactSection = () => {
         setFormData({ name: '', email: '', message: '' })
         console.log('✅ 문의가 성공적으로 저장되었습니다:', result.data)
       } else {
-        throw new Error('Supabase 저장 실패')
+        setSubmitStatus('error')
+        console.error('❌ 저장 실패:', (result as any).error)
       }
     } catch (error) {
-      console.log('⚠️ Supabase 연결 실패, 로컬 스토리지에 저장합니다')
-      
-      // 폴백: 로컬 스토리지에 저장
-      const localResult = saveToLocalStorage(formData as ContactForm)
-      
-      if (localResult.success) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', message: '' })
-      } else {
-        setSubmitStatus('error')
-        console.error('❌ 저장 실패:', localResult.error)
-      }
+      setSubmitStatus('error')
+      console.error('❌ 예상치 못한 오류:', error)
     } finally {
       setIsSubmitting(false)
     }
