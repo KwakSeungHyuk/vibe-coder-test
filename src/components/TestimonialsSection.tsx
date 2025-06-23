@@ -67,7 +67,7 @@ const TestimonialsSection = () => {
             ease: "power2.out",
             snap: { textContent: 1 },
             onUpdate: function() {
-              number.textContent = Math.ceil(number.textContent)
+              number.textContent = Math.ceil(parseFloat(number.textContent || '0')).toString()
             }
           }
         )
