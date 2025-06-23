@@ -1,0 +1,38 @@
+{
+  "name": "vibe-coder-kwak",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbo",
+    "dev:port": "next dev --port 3000",
+    "dev:debug": "NODE_OPTIONS='--inspect' next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "clean": "rm -rf .next out",
+    "restart": "npm run clean && npm run dev"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.0",
+    "@supabase/supabase-js": "^2.50.0",
+    "autoprefixer": "^10.4.0",
+    "framer-motion": "^11.0.0",
+    "gsap": "^3.12.0",
+    "lottie-react": "^2.4.0",
+    "next": "13.5.6",
+    "postcss": "^8.4.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "swiper": "^11.0.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "13.5.6",
+    "typescript": "^5"
+  }
+}
